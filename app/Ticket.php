@@ -15,4 +15,8 @@ class Ticket extends Model
   public function notes(){
     return $this -> hasMany(Note::class);
   }
+
+  public function topic(){
+    return $this -> belongsTo(Topic::class);
+  }
 }

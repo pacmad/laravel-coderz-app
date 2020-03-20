@@ -39,7 +39,7 @@ class HomeController extends Controller
       switch ($query){
         case 'lastday':
           $date = $now -> subday();
-          $tickets = Ticket::whereDate('created_at', $date) -> get();
+          $tickets = Ticket::whereDate('created_at', '>', $date) -> get();
           break;
         case 'lastweek':
           $date = $now -> subweek();

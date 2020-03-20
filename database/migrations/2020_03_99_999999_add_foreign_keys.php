@@ -25,6 +25,11 @@ class AddForeignKeys extends Migration
         $table -> bigInteger('ticket_id') -> unsigned() -> index();
         $table -> foreign('ticket_id') -> references('id') -> on('tickets');
       });
+
+      Schema::table('tickets', function (Blueprint $table) {
+        $table -> bigInteger('topic_id') -> unsigned() -> index();
+        $table -> foreign('topic_id') -> references('id') -> on('topics');
+      });
     }
 
     /**
@@ -42,6 +47,11 @@ class AddForeignKeys extends Migration
       Schema::table('ticket_user', function (Blueprint $table) {
             $table -> dropForeign(['user_id', 'ticket_id']);
             $table -> dropColumn(['user_id', 'ticket_id']);
+      });
+
+      Schema::table('tickets', function (Blueprint $table) {
+            $table -> dropForeign(['topic_id']);
+            $table -> dropColumn('topic_id');
       });
     }
 }

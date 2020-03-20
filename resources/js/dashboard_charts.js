@@ -1,4 +1,5 @@
 import Chart from 'chart.js'
+import axios from 'axios'
 
 const drpbtn = document.querySelector('.dropbtn');
 const drpcnt = document.querySelector('.dropdown-content');
@@ -8,16 +9,45 @@ drpbtn.addEventListener('click', () => {
 })
 
 
+function getParam(string) {
+    var query = window.location.search;
+    var searchParams = new URLSearchParams(query);
+    return searchParams.get(string);
+}
 
-function drawGraph(selector){
+
+function getData(graph, time, solved, user = 0){
+  if(user !==0){
+    var params = {
+      solved: solved,
+      time: time,
+      user: user
+    }
+  }else{
+    var params = {
+      solved: solved,
+      time: time,
+    }
+  }
+  axios.post('/api/graph', params)
+    .then(function (response) {
+      console.log(response);
+      drawGraph(graph, response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+}
+
+function drawGraph(selector, data){
   var ctx = document.getElementById(selector);
   var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: data.data.topics,
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            label: '# of Tickets',
+            data: data.data.numbers,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -48,10 +78,12 @@ function drawGraph(selector){
     }
 });
 }
+let param = getParam('query');
+let param1 = getParam('user');
+getData('myChart1', param, 'none')
+getData('myChart2', param, 1)
+getData('myChart3', param, 0)
 
-drawGraph('myChart1')
-drawGraph('myChart2')
-drawGraph('myChart3')
-drawGraph('myChart4')
-drawGraph('myChart5')
-drawGraph('myChart6')
+getData('myChart4', param, 'none', param1)
+getData('myChart5', param, 1, param1)
+getData('myChart6', param, 0, param1)
