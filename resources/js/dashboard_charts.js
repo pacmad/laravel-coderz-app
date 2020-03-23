@@ -1,12 +1,6 @@
 import Chart from 'chart.js'
 import axios from 'axios'
 
-const drpbtn = document.querySelector('.dropbtn');
-const drpcnt = document.querySelector('.dropdown-content');
-
-drpbtn.addEventListener('click', () => {
-  drpcnt.classList.toggle('d-none');
-})
 
 
 function getParam(string) {

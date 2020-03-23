@@ -83424,11 +83424,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 
 
-var drpbtn = document.querySelector('.dropbtn');
-var drpcnt = document.querySelector('.dropdown-content');
-drpbtn.addEventListener('click', function () {
-  drpcnt.classList.toggle('d-none');
-});
 
 function getParam(string) {
   var query = window.location.search;
