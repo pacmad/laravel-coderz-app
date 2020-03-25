@@ -15,8 +15,8 @@ Route::get('/', function () {
     return redirect() -> route('home');
 });
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/tickets', 'TicketController@index') -> name('tickets');
+Route::get('/home', function(){
+    return view('app');
+})->name('home');

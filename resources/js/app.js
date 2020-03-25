@@ -5,6 +5,8 @@
  */
 
 require('./bootstrap');
+import Chart from 'chart.js'
+import axios from 'axios'
 
 window.Vue = require('vue');
 
@@ -19,7 +21,11 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('statistics-container', require('./components/StatisticsContainer.vue').default);
+Vue.component('application', require('./components/App.vue').default);
+Vue.component('navbar', require('./components/Navbar.vue').default);
+Vue.component('tickets-container', require('./components/TicketsContainer.vue').default);
+Vue.component('graph', require('./components/Graph.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

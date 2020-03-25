@@ -17,4 +17,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/graph', 'ApiController@search');
+Route::post('/graph', 'StatisticsController@search');

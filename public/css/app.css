@@ -16814,3 +16814,7 @@ a.text-dark:focus {
   background-color: #27283C;
 }
 
+.c-pointer {
+  cursor: pointer;
+}
+

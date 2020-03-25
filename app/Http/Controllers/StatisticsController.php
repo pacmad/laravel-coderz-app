@@ -9,7 +9,7 @@ use Carbon\Carbon;
 use App\User;
 use Illuminate\Support\Facades\DB;
 
-class ApiController extends Controller
+class StatisticsController extends Controller
 {
     public function search(Request $request){
     $time = $request -> input('time');
