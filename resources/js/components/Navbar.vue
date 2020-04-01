@@ -22,7 +22,7 @@
                 </li>
                 <li class="nav-item">
                     <a id="navbarDropdown" class="nav-link text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        Username
+                        User1
                     </a>
                 </li>
                 <li>

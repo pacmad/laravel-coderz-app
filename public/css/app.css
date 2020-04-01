@@ -16818,3 +16818,7 @@ a.text-dark:focus {
   cursor: pointer;
 }
 
+.t-border {
+  border-bottom: #ff6384;
+}
+

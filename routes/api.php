@@ -18,3 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/graph', 'StatisticsController@search');
+
+Route::get('/tickets', 'TicketController@index');
+Route::get('/tickets/{id}', 'TicketController@show');
+Route::post('/tickets', 'TicketController@store');
+Route::get('/tickets/user/{id}', 'TicketController@showUserTickets');

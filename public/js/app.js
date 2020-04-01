@@ -2177,7 +2177,57 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      tickets: [],
+      table: true,
+      ticket: {}
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('api/tickets/user/1').then(function (res) {
+      _this.tickets = res;
+      console.log(_this.tickets);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  },
+  methods: {
+    viewTicket: function viewTicket(index) {
+      this.ticket = this.tickets.data[index];
+      this.table = false;
+    }
+  }
+});
 
 /***/ }),
 
@@ -71484,7 +71534,7 @@ var staticRenderFns = [
                     },
                     [
                       _vm._v(
-                        "\n                        Username\n                    "
+                        "\n                        User1\n                    "
                       )
                     ]
                   )
@@ -71765,26 +71815,98 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    { staticClass: "row justify-content-center bg-color pt-4" },
+    [
+      _c("div", { staticClass: "col-md-10" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm.table
+          ? _c("div", { staticClass: "row" }, [
+              _c(
+                "table",
+                {
+                  staticClass:
+                    "table table-striped bg-color1 shadow-lg text-white"
+                },
+                [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.tickets.data, function(ticket, index) {
+                      return _c("tr", [
+                        _c(
+                          "th",
+                          {
+                            attrs: { scope: "row" },
+                            on: {
+                              click: function($event) {
+                                return _vm.viewTicket(index)
+                              }
+                            }
+                          },
+                          [_vm._v(_vm._s(ticket.id))]
+                        ),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(ticket.title))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(ticket.topic.name))])
+                      ])
+                    }),
+                    0
+                  )
+                ]
+              )
+            ])
+          : _c("div", { staticClass: "row text-white" }, [
+              _c("div", { staticClass: "col-md-12" }, [
+                _c(
+                  "p",
+                  {
+                    on: {
+                      click: function($event) {
+                        _vm.table = true
+                      }
+                    }
+                  },
+                  [_vm._v("Back")]
+                ),
+                _vm._v(" "),
+                _c("h6", [_vm._v("Descrizione:")]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(_vm.ticket.body))])
+              ])
+            ])
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "row justify-content-center bg-color pt-4" },
-      [
-        _c("div", { staticClass: "col-md-10" }, [
-          _c("div", { staticClass: "row mt-4" }, [
-            _c("div", { staticClass: "col-md-10 text-white" }, [
-              _c("h3", [_vm._v("Lavorazione tickets")])
-            ])
-          ])
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "row mt-4" }, [
+      _c("div", { staticClass: "col-md-10 text-white" }, [
+        _c("h3", [_vm._v("Lavorazione tickets")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Title")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Topic")])
+      ])
+    ])
   }
 ]
 render._withStripped = true
