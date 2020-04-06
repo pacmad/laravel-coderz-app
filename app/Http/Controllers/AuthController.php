@@ -23,4 +23,12 @@ class AuthController extends Controller
 
 return $response->getBody();
   }
+
+  public function logout(){
+    auth() -> user() -> tokens -> each(function($token){
+      $token -> delete();
+    });
+
+    return response() -> json('Logged Out!', 200);
+  }
 }
